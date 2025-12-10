@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frank Kao - Digital Business Card</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg-gradient-start: #0f172a;
+            --bg-gradient-end: #1e293b;
+            --card-bg: #0b1120;
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.12);
+            --text-main: #e5e7eb;
+            --text-sub: #9ca3af;
+            --border-color: rgba(148, 163, 184, 0.35);
+            --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.85);
+            --radius-xl: 24px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Noto Sans TC", system-ui, sans-serif;
+            background: radial-gradient(circle at top, #020617 0, #020617 45%, #020617 100%);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 480px;
+            background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
+                        radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.16), transparent 60%),
+                        var(--card-bg);
+            border-radius: var(--radius-xl);
+            padding: 24px 22px 22px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 10% 0%, rgba(248, 250, 252, 0.16), transparent 40%);
+            mix-blend-mode: soft-light;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .card-inner { position: relative; z-index: 1; }
+
+        .header { display: flex; align-items: center; gap: 18px; }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 999px;
+            border: 2px solid rgba(248, 250, 252, 0.9);
+            background: radial-gradient(circle at 30% 20%, #f9fafb, #e5e7eb);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1.6rem; color: #111827;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+        }
+
+        .name-block { flex: 1; }
+
+        .name { font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; }
+        .title { font-size: 0.92rem; color: var(--accent); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+        .company { font-size: 0.9rem; color: var(--text-sub); }
+
+        .divider { margin: 18px 0 14px; border-bottom: 1px solid rgba(148, 163, 184, 0.4); }
+
+        .bio { font-size: 0.9rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 12px; }
+        .bio-strong { color: #e5e7eb; font-weight: 500; }
+
+        .section-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: rgba(148, 163, 184, 0.9); margin-bottom: 4px; }
+
+        .contact-grid { display: grid; gap: 8px; margin-bottom: 12px; }
+
+        .contact-item {
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 10px; border-radius: 999px;
+            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(51, 65, 85, 0.9);
+        }
+
+        .contact-label { font-size: 0.75rem; color: var(--text-sub); min-width: 62px; }
+        .contact-value { font-size: 0.86rem; overflow-wrap: anywhere; }
+        .contact-link { color: var(--accent); text-decoration: none; }
+        .contact-link:hover { text-decoration: underline; }
+
+        .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+
+        .btn {
+            flex: 1 1 130px;
+            border-radius: 999px;
+            padding: 9px 12px;
+            font-size: 0.86rem;
+            font-weight: 500;
+            border: 1px solid rgba(56, 189, 248, 0.7);
+            background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), rgba(15, 23, 42, 0.98));
+            color: #e5e7eb;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn.secondary { border-color: rgba(148, 163, 184, 0.75); background: rgba(15, 23, 42, 0.9); color: var(--text-sub); }
+
+        .tag {
+            position: absolute; top: 14px; right: 18px;
+            padding: 4px 9px; font-size: 0.72rem;
+            border-radius: 999px;
+            background: var(--accent-soft); color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="tag">Digital Card</div>
+
+    <div class="card-inner">
+
+        <div class="header">
+            <div class="avatar">FK</div>
+
+            <div class="name-block">
+                <div class="title">Business Assistant</div>
+                <div class="name">Frank Kao 高伯誠</div>
+                <div class="company">皓樣科技股份有限公司</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="bio">
+            <span class="bio-strong">負責 ESG 服務協助、能源管理與客戶業務支援</span>，
+            協助企業永續推動與碳盤查相關事務，提供專業支援與服務銜接。
+        </p>
+
+        <div class="section-label">Contact</div>
+        <div class="contact-grid">
+            <div class="contact-item"><div class="contact-label">Phone</div><div class="contact-value"><a class="contact-link" href="tel:02-6620-2388">02-6620-2388</a> #17</div></div>
+            <div class="contact-item"><div class="contact-label">Fax</div><div class="contact-value">02-6620-2720</div></div>
+            <div class="contact-item"><div class="contact-label">Mobile</div><div class="contact-value"><a class="contact-link" href="tel:0930019668">0930-019-668</a></div></div>
+            <div class="contact-item"><div class="contact-label">Email</div><div class="contact-value"><a class="contact-link" href="mailto:201.esg@udmgroup.com">201.esg@udmgroup.com</a></div></div>
+        </div>
+
+        <div class="actions">
+            <a class="btn" href="tel:0930019668">📞 撥打手機</a>
+            <a class="btn secondary" href="mailto:201.esg@udmgroup.com?subject=業務洽詢&body=您好，我想了解...">✉️ 寄信給我</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
